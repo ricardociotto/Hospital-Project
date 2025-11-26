@@ -1,0 +1,41 @@
+/* src/index.css */
+:root {
+  --primary: #0056b3; /* Azul Saúde */
+  --secondary: #f4f6f8; /* Cinza Fundo */
+  --text: #333;
+  --white: #fff;
+  --sidebar-width: 250px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--secondary);
+  color: var(--text);
+  height: 100vh;
+}
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; }
+
+/* Utilitários simples */
+.card {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
