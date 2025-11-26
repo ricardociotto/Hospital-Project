@@ -1,0 +1,103 @@
+/* src/pages/Pacientes.css */
+.pacientes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  max-width: 400px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  width: 100%;
+  font-size: 16px;
+}
+
+.search-icon { color: #888; }
+
+/* Tabela */
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background-color: #f8f9fa;
+  color: #666;
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: #fafafa;
+}
+
+/* Badges e Status */
+.badge {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 0;
+  display: inline-block;
+  margin-top: 4px;
+}
+.risco-alto, .risco-crítico { background: #ffebee; color: #c62828; }
+.risco-médio { background: #fff3e0; color: #ef6c00; }
+.risco-baixo { background: #e8f5e9; color: #2e7d32; }
+
+.status-dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+.status-internado { background-color: #ef6c00; }
+.status-aguardando { background-color: #1976d2; }
+.status-alta { background-color: #2e7d32; }
+
+/* Botões de Ação */
+.actions-cell {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.btn-icon.video { color: #0056b3; background: #e3f2fd; }
+.btn-icon.edit { color: #fbc02d; background: #fffde7; }
+.btn-icon.delete { color: #e53935; background: #ffebee; }
+
+.btn-icon:hover { transform: scale(1.1); }
