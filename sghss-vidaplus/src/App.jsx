@@ -4,6 +4,7 @@ import MainLayout from './layout/MainLayout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Pacientes from './pages/Pacientes';
+import Agendamentos from './pages/Agendamentos';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/pacientes" element={<Pacientes />} />
-          <Route path="/agendamentos" element={<div className='card'><h2>Agendamentos</h2></div>} />
+          <Route path="/agendamentos" element={<Agendamentos />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,12 +1,13 @@
 // src/data/mockData.js
 
+// --- LISTA DE PACIENTES ---
 export const pacientesIniciais = [
   {
     id: 1,
     nome: "Ana Silva Souza",
     idade: 34,
     cpf: "123.456.789-00",
-    status: "Internado", // ou "Aguardando", "Alta"
+    status: "Internado", 
     ultimaConsulta: "24/11/2025",
     risco: "Alto"
   },
@@ -36,5 +37,49 @@ export const pacientesIniciais = [
     status: "Internado",
     ultimaConsulta: "25/11/2025",
     risco: "Crítico"
+  }
+];
+
+// --- LISTA DE AGENDAMENTOS ---
+export const agendamentosIniciais = [
+  {
+    id: 1,
+    paciente: "Ana Silva Souza",
+    medico: "Dr. Ricardo",
+    tipo: "Telemedicina",
+    data: "Hoje",
+    hora: "09:00",
+    status: "Confirmado",
+    motivo: "Retorno Cardiologia"
+  },
+  {
+    id: 2,
+    paciente: "Carlos Eduardo Lima",
+    medico: "Dr. Ricardo",
+    tipo: "Presencial",
+    data: "Hoje",
+    hora: "10:30",
+    status: "Pendente",
+    motivo: "Dor no peito"
+  },
+  {
+    id: 3,
+    paciente: "Mariana Oliveira",
+    medico: "Dra. Fernanda",
+    tipo: "Presencial",
+    data: "Hoje",
+    hora: "14:00",
+    status: "Finalizado",
+    motivo: "Exames de Rotina"
+  },
+  {
+    id: 4,
+    paciente: "Roberto Santos",
+    medico: "Dr. Ricardo",
+    tipo: "Telemedicina",
+    data: "Hoje",
+    hora: "16:00",
+    status: "Cancelado",
+    motivo: "Acompanhamento"
   }
 ];
