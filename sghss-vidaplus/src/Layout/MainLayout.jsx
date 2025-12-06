@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-// Trocamos lucide-react por react-icons (Fa = FontAwesome, Md = MaterialDesign)
-import { FaUserMd, FaUsers, FaCalendarAlt, FaSignOutAlt } from 'react-icons/fa';
+// Adicionei FaProcedures (Leitos) e FaShieldAlt (Segurança)
+import { FaUserMd, FaUsers, FaCalendarAlt, FaSignOutAlt, FaProcedures, FaShieldAlt } from 'react-icons/fa';
 import { MdSpaceDashboard } from 'react-icons/md';
 import './MainLayout.css';
 
@@ -23,6 +23,16 @@ const MainLayout = () => {
           <Link to="/agendamentos" className="nav-item">
             <FaCalendarAlt size={20} /> Agenda
           </Link>
+          
+          {/* --- NOVOS MÓDULOS --- */}
+          <Link to="/internacoes" className="nav-item">
+            <FaProcedures size={20} /> Internações
+          </Link>
+          <Link to="/auditoria" className="nav-item">
+            <FaShieldAlt size={20} /> Segurança/Logs
+          </Link>
+          {/* --------------------- */}
+
         </nav>
         <div className="logout-section">
           <Link to="/" className="nav-item logout">

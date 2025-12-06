@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { agendamentosIniciais } from '../data/mockData';
-import { FaCalendarAlt, FaVideo, FaUserInjured, FaCheck, FaTimes } from 'react-icons/fa';
+// Adicionei FaFileMedical para o ícone do prontuário
+import { FaCalendarAlt, FaVideo, FaCheck, FaTimes, FaFileMedical } from 'react-icons/fa';
+import ModalProntuario from '../components/ModalProntuario'; // Importação do novo componente
 import './Agendamentos.css';
 
 const Agendamentos = () => {
   const [agendamentos, setAgendamentos] = useState(agendamentosIniciais);
+  
+  // --- ESTADOS DO MODAL DE PRONTUÁRIO ---
+  const [showProntuario, setShowProntuario] = useState(false);
+  const [pacienteSelecionado, setPacienteSelecionado] = useState("");
 
+  // Função para alterar status do agendamento (Confirmar/Cancelar)
   const alterarStatus = (id, novoStatus) => {
     const novosAgendamentos = agendamentos.map(ag => 
       ag.id === id ? { ...ag, status: novoStatus } : ag
@@ -13,13 +20,16 @@ const Agendamentos = () => {
     setAgendamentos(novosAgendamentos);
   };
 
-  // NOVA FUNÇÃO: Abre o Meet e muda o status para "Em Andamento" (opcional)
+  // Função que abre o Meet e muda status
   const iniciarAtendimento = (id) => {
-    // Abre uma nova sala do Google Meet em outra aba
     window.open('https://meet.google.com/new', '_blank');
-    
-    // (Opcional) Muda visualmente para mostrar que iniciou
     alterarStatus(id, 'Em Atendimento'); 
+  };
+
+  // --- NOVA FUNÇÃO: ABRIR PRONTUÁRIO ---
+  const abrirProntuario = (nomePaciente) => {
+    setPacienteSelecionado(nomePaciente);
+    setShowProntuario(true);
   };
 
   return (
@@ -52,6 +62,7 @@ const Agendamentos = () => {
             </div>
 
             <div className="actions-column">
+              {/* Ações para agendamentos Pendentes */}
               {item.status === 'Pendente' && (
                 <>
                   <button className="btn-action confirm" onClick={() => alterarStatus(item.id, 'Confirmado')} title="Confirmar">
@@ -62,19 +73,40 @@ const Agendamentos = () => {
                   </button>
                 </>
               )}
-              {/* Se estiver confirmado ou Em Atendimento, mostra o botão Iniciar */}
+
+              {/* Ações para agendamentos Confirmados ou Em Atendimento */}
               {(item.status === 'Confirmado' || item.status === 'Em Atendimento') && (
-                <button 
-                  className="btn-action finish" 
-                  onClick={() => iniciarAtendimento(item.id)}
-                  title="Iniciar Videochamada">
-                  <FaVideo /> Iniciar Meet
-                </button>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                    <button 
+                    className="btn-action finish" 
+                    onClick={() => iniciarAtendimento(item.id)}
+                    title="Iniciar Videochamada">
+                    <FaVideo /> Iniciar Meet
+                    </button>
+
+                    {/* --- NOVO BOTÃO DE PRONTUÁRIO --- */}
+                    <button 
+                    className="btn-action" 
+                    onClick={() => abrirProntuario(item.paciente)}
+                    title="Abrir Prontuário e Prescrição"
+                    style={{ backgroundColor: '#6c757d', color: 'white', display: 'flex', alignItems: 'center', gap: '5px', padding: '8px 12px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+                    >
+                    <FaFileMedical /> Prontuário
+                    </button>
+                </div>
               )}
             </div>
           </div>
         ))}
       </div>
+
+      {/* --- RENDERIZAÇÃO DO MODAL --- */}
+      {showProntuario && (
+        <ModalProntuario 
+            onClose={() => setShowProntuario(false)} 
+            pacienteNome={pacienteSelecionado} 
+        />
+      )}
     </div>
   );
 };
