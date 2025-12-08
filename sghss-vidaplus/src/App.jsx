@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './Layout/MainLayout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -7,30 +7,25 @@ import Pacientes from './pages/Pacientes';
 import Agendamentos from './pages/Agendamentos';
 import Internacoes from './pages/Internacoes';
 import Auditoria from './pages/Auditoria';
-
-// --- NOVOS IMPORTS ---
 import Profissionais from './pages/Profissionais';
 import Relatorios from './pages/Relatorios';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/pacientes" element={<Pacientes />} />
           <Route path="/agendamentos" element={<Agendamentos />} />
           <Route path="/internacoes" element={<Internacoes />} />
           <Route path="/auditoria" element={<Auditoria />} />
-          
-          {/* --- NOVAS ROTAS REGISTRADAS --- */}
           <Route path="/profissionais" element={<Profissionais />} />
           <Route path="/relatorios" element={<Relatorios />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
